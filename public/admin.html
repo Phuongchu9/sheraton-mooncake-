@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin â€“ Sheraton Mooncake</title>
+  <title>Admin – Sheraton Mooncake</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -79,10 +79,10 @@
 <!-- LOGIN -->
 <div class="login-wrap" id="loginWrap">
   <div class="login-box">
-    <div class="login-logo">Sheraton Â· Admin</div>
-    <div class="login-sub">Quáº£n LÃ½ ÄÆ¡n HÃ ng</div>
-    <input type="password" class="login-input" id="loginPwd" placeholder="Nháº­p máº­t kháº©u admin..." onkeydown="if(event.key==='Enter')doLogin()" />
-    <button class="login-btn" onclick="doLogin()">ÄÄƒng Nháº­p</button>
+    <div class="login-logo">Sheraton · Admin</div>
+    <div class="login-sub">Quản Lý Đơn Hàng</div>
+    <input type="password" class="login-input" id="loginPwd" placeholder="Nhập mật khẩu admin..." onkeydown="if(event.key==='Enter')doLogin()" />
+    <button class="login-btn" onclick="doLogin()">Đăng Nhập</button>
     <div class="login-error" id="loginErr"></div>
   </div>
 </div>
@@ -90,51 +90,51 @@
 <!-- DASHBOARD -->
 <div id="dashboard">
   <div class="topbar">
-    <div class="topbar-logo">Sheraton Â· Quáº£n LÃ½ ÄÆ¡n HÃ ng</div>
+    <div class="topbar-logo">Sheraton · Quản Lý Đơn Hàng</div>
     <div class="topbar-right">
-      <a href="/" class="topbar-link">â† Vá» Trang Chá»§</a>
-      <span class="topbar-link" onclick="logout()">ÄÄƒng Xuáº¥t</span>
+      <a href="/" class="topbar-link">← Về Trang Chủ</a>
+      <span class="topbar-link" onclick="logout()">Đăng Xuất</span>
     </div>
   </div>
 
   <div class="main">
     <div class="stats-grid" id="statsGrid">
-      <div class="stat-card"><div class="stat-card-num" id="s-total">â€”</div><div class="stat-card-label">Tá»•ng ÄÆ¡n</div></div>
-      <div class="stat-card"><div class="stat-card-num" id="s-new" style="color:var(--new)">â€”</div><div class="stat-card-label">Má»›i</div></div>
-      <div class="stat-card"><div class="stat-card-num" id="s-contacted" style="color:var(--contacted)">â€”</div><div class="stat-card-label">ÄÃ£ LiÃªn Há»‡</div></div>
-      <div class="stat-card"><div class="stat-card-num" id="s-completed" style="color:var(--completed)">â€”</div><div class="stat-card-label">HoÃ n ThÃ nh</div></div>
+      <div class="stat-card"><div class="stat-card-num" id="s-total">—</div><div class="stat-card-label">Tổng Đơn</div></div>
+      <div class="stat-card"><div class="stat-card-num" id="s-new" style="color:var(--new)">—</div><div class="stat-card-label">Mới</div></div>
+      <div class="stat-card"><div class="stat-card-num" id="s-contacted" style="color:var(--contacted)">—</div><div class="stat-card-label">Đã Liên Hệ</div></div>
+      <div class="stat-card"><div class="stat-card-num" id="s-completed" style="color:var(--completed)">—</div><div class="stat-card-label">Hoàn Thành</div></div>
     </div>
 
     <div class="toolbar">
-      <input type="text" class="search-input" id="searchInput" placeholder="TÃ¬m theo tÃªn, sá»‘ Ä‘iá»‡n thoáº¡i, email..." oninput="debounceLoad()" />
-      <button class="filter-btn active" data-status="all" onclick="setFilter(this)">Táº¥t Cáº£</button>
-      <button class="filter-btn" data-status="new" onclick="setFilter(this)">Má»›i</button>
-      <button class="filter-btn" data-status="contacted" onclick="setFilter(this)">ÄÃ£ LiÃªn Há»‡</button>
-      <button class="filter-btn" data-status="completed" onclick="setFilter(this)">HoÃ n ThÃ nh</button>
-      <button class="filter-btn" data-status="cancelled" onclick="setFilter(this)">ÄÃ£ Há»§y</button>
-      <button class="refresh-btn" onclick="loadOrders()" title="LÃ m má»›i">â†»</button>
+      <input type="text" class="search-input" id="searchInput" placeholder="Tìm theo tên, số điện thoại, email..." oninput="debounceLoad()" />
+      <button class="filter-btn active" data-status="all" onclick="setFilter(this)">Tất Cả</button>
+      <button class="filter-btn" data-status="new" onclick="setFilter(this)">Mới</button>
+      <button class="filter-btn" data-status="contacted" onclick="setFilter(this)">Đã Liên Hệ</button>
+      <button class="filter-btn" data-status="completed" onclick="setFilter(this)">Hoàn Thành</button>
+      <button class="filter-btn" data-status="cancelled" onclick="setFilter(this)">Đã Hủy</button>
+      <button class="refresh-btn" onclick="loadOrders()" title="Làm mới">↻</button>
     </div>
 
     <div class="table-wrap">
-      <div class="loading" id="loadingMsg">Äang táº£i...</div>
+      <div class="loading" id="loadingMsg">Đang tải...</div>
       <table id="ordersTable" style="display:none">
         <thead>
           <tr>
             <th>#</th>
-            <th>Thá»i Gian</th>
-            <th>Há» TÃªn</th>
-            <th>Äiá»‡n Thoáº¡i</th>
+            <th>Thời Gian</th>
+            <th>Họ Tên</th>
+            <th>Điện Thoại</th>
             <th>Email</th>
-            <th>Sáº£n Pháº©m</th>
+            <th>Sản Phẩm</th>
             <th>SL</th>
-            <th>Ghi ChÃº</th>
-            <th>Tráº¡ng ThÃ¡i</th>
+            <th>Ghi Chú</th>
+            <th>Trạng Thái</th>
             <th></th>
           </tr>
         </thead>
         <tbody id="ordersBody"></tbody>
       </table>
-      <div class="empty-state" id="emptyMsg" style="display:none">KhÃ´ng cÃ³ Ä‘Æ¡n hÃ ng nÃ o.</div>
+      <div class="empty-state" id="emptyMsg" style="display:none">Không có đơn hàng nào.</div>
     </div>
   </div>
 </div>
@@ -167,7 +167,7 @@
 
   function showDashboard() {
     document.getElementById('loginWrap').style.display = 'none';
-    document.getElementById('dashboard').style.display = '';
+    document.getElementById('dashboard').style.display = 'block';
     loadOrders();
   }
 
@@ -222,28 +222,28 @@
         <tr id="row-${o.id}">
           <td style="color:var(--muted);font-size:.7rem">#${o.id}</td>
           <td style="color:var(--muted);font-size:.72rem;white-space:nowrap">${formatDate(o.created_at)}</td>
-          <td>${o.name || '<span style="color:var(--muted)">â€”</span>'}</td>
+          <td>${o.name || '<span style="color:var(--muted)">—</span>'}</td>
           <td><a href="tel:${o.phone}" style="color:var(--gold);text-decoration:none">${o.phone}</a></td>
-          <td style="font-size:.75rem">${o.email || '<span style="color:var(--muted)">â€”</span>'}</td>
-          <td style="font-size:.75rem;max-width:200px">${o.product || '<span style="color:var(--muted)">TÆ° váº¥n</span>'}</td>
+          <td style="font-size:.75rem">${o.email || '<span style="color:var(--muted)">—</span>'}</td>
+          <td style="font-size:.75rem;max-width:200px">${o.product || '<span style="color:var(--muted)">Tư vấn</span>'}</td>
           <td style="text-align:center">${o.quantity}</td>
-          <td style="font-size:.72rem;color:var(--muted);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${o.message || ''}">${o.message || 'â€”'}</td>
+          <td style="font-size:.72rem;color:var(--muted);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${o.message || ''}">${o.message || '—'}</td>
           <td><span class="badge badge-${o.status}">${statusLabel(o.status)}</span></td>
           <td style="display:flex;gap:8px;align-items:center">
-            <select class="action-select" onchange="updateStatus(${o.id}, this.value)" value="${o.status}">
-              <option value="new" ${o.status==='new'?'selected':''}>Má»›i</option>
-              <option value="contacted" ${o.status==='contacted'?'selected':''}>ÄÃ£ LiÃªn Há»‡</option>
-              <option value="completed" ${o.status==='completed'?'selected':''}>HoÃ n ThÃ nh</option>
-              <option value="cancelled" ${o.status==='cancelled'?'selected':''}>ÄÃ£ Há»§y</option>
+            <select class="action-select" onchange="updateStatus(${o.id}, this.value)">
+              <option value="new" ${o.status==='new'?'selected':''}>Mới</option>
+              <option value="contacted" ${o.status==='contacted'?'selected':''}>Đã Liên Hệ</option>
+              <option value="completed" ${o.status==='completed'?'selected':''}>Hoàn Thành</option>
+              <option value="cancelled" ${o.status==='cancelled'?'selected':''}>Đã Hủy</option>
             </select>
-            <button class="delete-btn" onclick="deleteOrder(${o.id})" title="XÃ³a Ä‘Æ¡n">âœ•</button>
+            <button class="delete-btn" onclick="deleteOrder(${o.id})" title="Xóa đơn">✕</button>
           </td>
         </tr>
       `).join('');
 
       document.getElementById('ordersTable').style.display = '';
     } catch (err) {
-      document.getElementById('loadingMsg').textContent = 'Lá»—i táº£i dá»¯ liá»‡u.';
+      document.getElementById('loadingMsg').textContent = 'Lỗi tải dữ liệu.';
     }
   }
 
@@ -257,13 +257,13 @@
   }
 
   async function deleteOrder(id) {
-    if (!confirm('XÃ³a Ä‘Æ¡n hÃ ng nÃ y?')) return;
+    if (!confirm('Xóa đơn hàng này?')) return;
     await fetch(`/api/orders/${id}`, { method: 'DELETE', headers: { 'x-admin-token': token } });
     loadOrders();
   }
 
   function statusLabel(s) {
-    return { new: 'Má»›i', contacted: 'ÄÃ£ LiÃªn Há»‡', completed: 'HoÃ n ThÃ nh', cancelled: 'ÄÃ£ Há»§y' }[s] || s;
+    return { new: 'Mới', contacted: 'Đã Liên Hệ', completed: 'Hoàn Thành', cancelled: 'Đã Hủy' }[s] || s;
   }
 
   function formatDate(dt) {
@@ -271,7 +271,6 @@
     return d.toLocaleDateString('vi-VN') + ' ' + d.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
   }
 
-  // Auto-refresh every 60s
   setInterval(() => { if (token) loadOrders(); }, 60000);
 </script>
 </body>
