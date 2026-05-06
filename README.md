@@ -46,7 +46,7 @@ sheraton-mooncake/
 ## Admin
 
 URL: `/admin.html`  
-Mật khẩu mặc định: `admin123` (đổi qua biến môi trường `ADMIN_PASSWORD`)
+Mật khẩu: đặt qua biến môi trường `ADMIN_PASSWORD` trong file `.env`
 
 ## Deploy
 
