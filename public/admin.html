@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin â€“ Sheraton Mooncake</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #c9a84c; --gold-light: #e8d5a3; --deep: #0d0a06;
+      --dark: #1a1208; --panel: #1f1810; --text: #f0e6ce; --muted: #a89070;
+      --new: #c9a84c; --contacted: #4a90d9; --completed: #5aaf6a; --cancelled: #e55;
+    }
+    body { font-family: 'Montserrat', sans-serif; background: var(--deep); color: var(--text); min-height: 100vh; }
+
+    /* LOGIN */
+    .login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .login-box { background: var(--panel); border: 1px solid rgba(201,168,76,.2); padding: 56px 48px; width: 100%; max-width: 400px; text-align: center; }
+    .login-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; letter-spacing: .2em; color: var(--gold); margin-bottom: 8px; }
+    .login-sub { font-size: .7rem; letter-spacing: .2em; color: var(--muted); text-transform: uppercase; margin-bottom: 40px; }
+    .login-input { width: 100%; background: rgba(255,255,255,.05); border: 1px solid rgba(201,168,76,.25); padding: 14px 18px; color: var(--text); font-family: 'Montserrat', sans-serif; font-size: .85rem; outline: none; margin-bottom: 16px; }
+    .login-input:focus { border-color: var(--gold); }
+    .login-btn { width: 100%; background: var(--gold); border: none; color: var(--deep); padding: 14px; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600; }
+    .login-btn:hover { background: var(--gold-light); }
+    .login-error { color: #e55; font-size: .75rem; margin-top: 12px; }
+
+    /* DASHBOARD */
+    #dashboard { display: none; }
+
+    .topbar { background: var(--dark); border-bottom: 1px solid rgba(201,168,76,.12); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; }
+    .topbar-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold); letter-spacing: .15em; }
+    .topbar-right { display: flex; align-items: center; gap: 20px; }
+    .topbar-link { font-size: .7rem; color: var(--muted); text-decoration: none; letter-spacing: .1em; cursor: pointer; }
+    .topbar-link:hover { color: var(--gold); }
+
+    .main { padding: 32px; max-width: 1400px; margin: 0 auto; }
+
+    /* STATS */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+    .stat-card { background: var(--panel); border: 1px solid rgba(201,168,76,.1); padding: 28px 24px; }
+    .stat-card-num { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; color: var(--gold); line-height: 1; }
+    .stat-card-label { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+
+    /* TOOLBAR */
+    .toolbar { display: flex; gap: 12px; margin-bottom: 24px; align-items: center; flex-wrap: wrap; }
+    .search-input { background: rgba(255,255,255,.05); border: 1px solid rgba(201,168,76,.2); padding: 10px 16px; color: var(--text); font-family: 'Montserrat', sans-serif; font-size: .8rem; outline: none; flex: 1; min-width: 200px; }
+    .search-input:focus { border-color: var(--gold); }
+    .filter-btn { background: transparent; border: 1px solid rgba(201,168,76,.25); color: var(--muted); padding: 10px 20px; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: all .2s; }
+    .filter-btn:hover, .filter-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,.08); }
+    .refresh-btn { background: transparent; border: 1px solid rgba(201,168,76,.25); color: var(--muted); padding: 10px 16px; font-size: .8rem; cursor: pointer; transition: all .2s; }
+    .refresh-btn:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* TABLE */
+    .table-wrap { background: var(--panel); border: 1px solid rgba(201,168,76,.1); overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th { padding: 14px 20px; text-align: left; font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid rgba(201,168,76,.1); white-space: nowrap; }
+    td { padding: 16px 20px; font-size: .8rem; border-bottom: 1px solid rgba(201,168,76,.06); vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(201,168,76,.03); }
+
+    .badge { display: inline-block; padding: 3px 10px; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; border-radius: 0; }
+    .badge-new { background: rgba(201,168,76,.15); color: var(--new); border: 1px solid rgba(201,168,76,.3); }
+    .badge-contacted { background: rgba(74,144,217,.15); color: var(--contacted); border: 1px solid rgba(74,144,217,.3); }
+    .badge-completed { background: rgba(90,175,106,.15); color: var(--completed); border: 1px solid rgba(90,175,106,.3); }
+    .badge-cancelled { background: rgba(229,85,85,.1); color: var(--cancelled); border: 1px solid rgba(229,85,85,.2); }
+
+    .action-select { background: var(--dark); border: 1px solid rgba(201,168,76,.2); color: var(--text); padding: 6px 10px; font-size: .7rem; cursor: pointer; font-family: 'Montserrat', sans-serif; outline: none; }
+    .action-select:focus { border-color: var(--gold); }
+    .delete-btn { background: none; border: none; color: rgba(229,85,85,.5); cursor: pointer; font-size: .9rem; padding: 4px 8px; transition: color .2s; }
+    .delete-btn:hover { color: var(--cancelled); }
+
+    .empty-state { text-align: center; padding: 80px; color: var(--muted); font-size: .85rem; }
+    .loading { text-align: center; padding: 60px; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-wrap" id="loginWrap">
+  <div class="login-box">
+    <div class="login-logo">Sheraton Â· Admin</div>
+    <div class="login-sub">Quáº£n LÃ½ ÄÆ¡n HÃ ng</div>
+    <input type="password" class="login-input" id="loginPwd" placeholder="Nháº­p máº­t kháº©u admin..." onkeydown="if(event.key==='Enter')doLogin()" />
+    <button class="login-btn" onclick="doLogin()">ÄÄƒng Nháº­p</button>
+    <div class="login-error" id="loginErr"></div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <div class="topbar">
+    <div class="topbar-logo">Sheraton Â· Quáº£n LÃ½ ÄÆ¡n HÃ ng</div>
+    <div class="topbar-right">
+      <a href="/" class="topbar-link">â† Vá» Trang Chá»§</a>
+      <span class="topbar-link" onclick="logout()">ÄÄƒng Xuáº¥t</span>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="stats-grid" id="statsGrid">
+      <div class="stat-card"><div class="stat-card-num" id="s-total">â€”</div><div class="stat-card-label">Tá»•ng ÄÆ¡n</div></div>
+      <div class="stat-card"><div class="stat-card-num" id="s-new" style="color:var(--new)">â€”</div><div class="stat-card-label">Má»›i</div></div>
+      <div class="stat-card"><div class="stat-card-num" id="s-contacted" style="color:var(--contacted)">â€”</div><div class="stat-card-label">ÄÃ£ LiÃªn Há»‡</div></div>
+      <div class="stat-card"><div class="stat-card-num" id="s-completed" style="color:var(--completed)">â€”</div><div class="stat-card-label">HoÃ n ThÃ nh</div></div>
+    </div>
+
+    <div class="toolbar">
+      <input type="text" class="search-input" id="searchInput" placeholder="TÃ¬m theo tÃªn, sá»‘ Ä‘iá»‡n thoáº¡i, email..." oninput="debounceLoad()" />
+      <button class="filter-btn active" data-status="all" onclick="setFilter(this)">Táº¥t Cáº£</button>
+      <button class="filter-btn" data-status="new" onclick="setFilter(this)">Má»›i</button>
+      <button class="filter-btn" data-status="contacted" onclick="setFilter(this)">ÄÃ£ LiÃªn Há»‡</button>
+      <button class="filter-btn" data-status="completed" onclick="setFilter(this)">HoÃ n ThÃ nh</button>
+      <button class="filter-btn" data-status="cancelled" onclick="setFilter(this)">ÄÃ£ Há»§y</button>
+      <button class="refresh-btn" onclick="loadOrders()" title="LÃ m má»›i">â†»</button>
+    </div>
+
+    <div class="table-wrap">
+      <div class="loading" id="loadingMsg">Äang táº£i...</div>
+      <table id="ordersTable" style="display:none">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Thá»i Gian</th>
+            <th>Há» TÃªn</th>
+            <th>Äiá»‡n Thoáº¡i</th>
+            <th>Email</th>
+            <th>Sáº£n Pháº©m</th>
+            <th>SL</th>
+            <th>Ghi ChÃº</th>
+            <th>Tráº¡ng ThÃ¡i</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="ordersBody"></tbody>
+      </table>
+      <div class="empty-state" id="emptyMsg" style="display:none">KhÃ´ng cÃ³ Ä‘Æ¡n hÃ ng nÃ o.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let token = sessionStorage.getItem('admin_token') || '';
+  let currentFilter = 'all';
+  let debounceTimer;
+
+  if (token) showDashboard();
+
+  async function doLogin() {
+    const pwd = document.getElementById('loginPwd').value;
+    document.getElementById('loginErr').textContent = '';
+    try {
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pwd }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      token = data.token;
+      sessionStorage.setItem('admin_token', token);
+      showDashboard();
+    } catch (err) {
+      document.getElementById('loginErr').textContent = err.message;
+    }
+  }
+
+  function showDashboard() {
+    document.getElementById('loginWrap').style.display = 'none';
+    document.getElementById('dashboard').style.display = '';
+    loadOrders();
+  }
+
+  function logout() {
+    sessionStorage.removeItem('admin_token');
+    token = '';
+    document.getElementById('loginWrap').style.display = '';
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('loginPwd').value = '';
+  }
+
+  function setFilter(btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.status;
+    loadOrders();
+  }
+
+  function debounceLoad() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(loadOrders, 350);
+  }
+
+  async function loadOrders() {
+    document.getElementById('loadingMsg').style.display = '';
+    document.getElementById('ordersTable').style.display = 'none';
+    document.getElementById('emptyMsg').style.display = 'none';
+
+    const search = document.getElementById('searchInput').value;
+    const params = new URLSearchParams({ status: currentFilter });
+    if (search) params.set('search', search);
+
+    try {
+      const res = await fetch('/api/orders?' + params, { headers: { 'x-admin-token': token } });
+      if (res.status === 401) { logout(); return; }
+      const { orders, stats } = await res.json();
+
+      document.getElementById('s-total').textContent = stats.total;
+      document.getElementById('s-new').textContent = stats.new_count;
+      document.getElementById('s-contacted').textContent = stats.contacted_count;
+      document.getElementById('s-completed').textContent = stats.completed_count;
+
+      document.getElementById('loadingMsg').style.display = 'none';
+
+      if (!orders.length) {
+        document.getElementById('emptyMsg').style.display = '';
+        return;
+      }
+
+      const tbody = document.getElementById('ordersBody');
+      tbody.innerHTML = orders.map(o => `
+        <tr id="row-${o.id}">
+          <td style="color:var(--muted);font-size:.7rem">#${o.id}</td>
+          <td style="color:var(--muted);font-size:.72rem;white-space:nowrap">${formatDate(o.created_at)}</td>
+          <td>${o.name || '<span style="color:var(--muted)">â€”</span>'}</td>
+          <td><a href="tel:${o.phone}" style="color:var(--gold);text-decoration:none">${o.phone}</a></td>
+          <td style="font-size:.75rem">${o.email || '<span style="color:var(--muted)">â€”</span>'}</td>
+          <td style="font-size:.75rem;max-width:200px">${o.product || '<span style="color:var(--muted)">TÆ° váº¥n</span>'}</td>
+          <td style="text-align:center">${o.quantity}</td>
+          <td style="font-size:.72rem;color:var(--muted);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${o.message || ''}">${o.message || 'â€”'}</td>
+          <td><span class="badge badge-${o.status}">${statusLabel(o.status)}</span></td>
+          <td style="display:flex;gap:8px;align-items:center">
+            <select class="action-select" onchange="updateStatus(${o.id}, this.value)" value="${o.status}">
+              <option value="new" ${o.status==='new'?'selected':''}>Má»›i</option>
+              <option value="contacted" ${o.status==='contacted'?'selected':''}>ÄÃ£ LiÃªn Há»‡</option>
+              <option value="completed" ${o.status==='completed'?'selected':''}>HoÃ n ThÃ nh</option>
+              <option value="cancelled" ${o.status==='cancelled'?'selected':''}>ÄÃ£ Há»§y</option>
+            </select>
+            <button class="delete-btn" onclick="deleteOrder(${o.id})" title="XÃ³a Ä‘Æ¡n">âœ•</button>
+          </td>
+        </tr>
+      `).join('');
+
+      document.getElementById('ordersTable').style.display = '';
+    } catch (err) {
+      document.getElementById('loadingMsg').textContent = 'Lá»—i táº£i dá»¯ liá»‡u.';
+    }
+  }
+
+  async function updateStatus(id, status) {
+    await fetch(`/api/orders/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json', 'x-admin-token': token },
+      body: JSON.stringify({ status }),
+    });
+    loadOrders();
+  }
+
+  async function deleteOrder(id) {
+    if (!confirm('XÃ³a Ä‘Æ¡n hÃ ng nÃ y?')) return;
+    await fetch(`/api/orders/${id}`, { method: 'DELETE', headers: { 'x-admin-token': token } });
+    loadOrders();
+  }
+
+  function statusLabel(s) {
+    return { new: 'Má»›i', contacted: 'ÄÃ£ LiÃªn Há»‡', completed: 'HoÃ n ThÃ nh', cancelled: 'ÄÃ£ Há»§y' }[s] || s;
+  }
+
+  function formatDate(dt) {
+    const d = new Date(dt);
+    return d.toLocaleDateString('vi-VN') + ' ' + d.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  // Auto-refresh every 60s
+  setInterval(() => { if (token) loadOrders(); }, 60000);
+</script>
+</body>
+</html>

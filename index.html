@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bánh Trung Thu Sheraton – Bộ Sưu Tập 2024</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8d5a3;
+      --gold-dark: #8b6914;
+      --crimson: #8b1a1a;
+      --deep: #0d0a06;
+      --dark: #1a1208;
+      --panel: #1f1810;
+      --text: #f0e6ce;
+      --muted: #a89070;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--deep);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 60px;
+      background: linear-gradient(to bottom, rgba(13,10,6,.95), transparent);
+      backdrop-filter: blur(2px);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; letter-spacing: .2em; color: var(--gold); text-transform: uppercase; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; transition: color .3s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: transparent; border: 1px solid var(--gold); color: var(--gold);
+      padding: 8px 22px; font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+      cursor: pointer; transition: all .3s; font-family: 'Montserrat', sans-serif;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--deep); }
+
+    /* ─── HERO ────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(139,26,26,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(201,168,76,.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 80% 20%, rgba(201,168,76,.06) 0%, transparent 60%),
+        var(--deep);
+    }
+    .hero-pattern {
+      position: absolute; inset: 0; opacity: .04;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='28' fill='none' stroke='%23c9a84c' stroke-width='1'/%3E%3Ccircle cx='30' cy='30' r='20' fill='none' stroke='%23c9a84c' stroke-width='.5'/%3E%3Cline x1='2' y1='30' x2='58' y2='30' stroke='%23c9a84c' stroke-width='.3'/%3E%3Cline x1='30' y1='2' x2='30' y2='58' stroke='%23c9a84c' stroke-width='.3'/%3E%3C/svg%3E");
+    }
+
+    .hero-tag {
+      font-size: .65rem; letter-spacing: .35em; text-transform: uppercase; color: var(--gold);
+      border: 1px solid rgba(201,168,76,.4); padding: 6px 20px; margin-bottom: 32px;
+      position: relative; z-index: 1;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 300; line-height: 1.05; color: var(--gold-light);
+      position: relative; z-index: 1; margin-bottom: 12px;
+    }
+    .hero h1 span { color: var(--gold); font-style: italic; }
+    .hero-sub {
+      font-size: clamp(.85rem, 1.5vw, 1rem); letter-spacing: .12em;
+      color: var(--muted); text-transform: uppercase; margin-bottom: 48px;
+      position: relative; z-index: 1;
+    }
+    .hero-divider {
+      width: 120px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 0 auto 48px; position: relative; z-index: 1;
+    }
+    .hero-desc {
+      max-width: 560px; font-size: .9rem; line-height: 1.9; color: var(--muted);
+      position: relative; z-index: 1; margin-bottom: 56px;
+    }
+    .btn-primary {
+      display: inline-block; background: var(--gold); color: var(--deep);
+      padding: 14px 40px; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase;
+      text-decoration: none; font-weight: 600; transition: all .3s;
+      position: relative; z-index: 1;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-block; border: 1px solid var(--gold); color: var(--gold);
+      padding: 14px 40px; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase;
+      text-decoration: none; font-weight: 500; transition: all .3s;
+      position: relative; z-index: 1; margin-left: 16px;
+    }
+    .btn-outline:hover { background: rgba(201,168,76,.1); }
+
+    /* Moon decoration */
+    .moon {
+      position: absolute; width: 420px; height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #3d2a08 0%, #1a1208 50%, #0d0a06 100%);
+      box-shadow: 0 0 80px rgba(201,168,76,.12), 0 0 160px rgba(201,168,76,.06), inset 0 0 60px rgba(0,0,0,.5);
+      top: 50%; right: 8%; transform: translateY(-50%);
+      opacity: .6;
+    }
+    .moon::before {
+      content: ''; position: absolute; inset: 8px; border-radius: 50%;
+      border: 1px solid rgba(201,168,76,.15);
+    }
+    .moon::after {
+      content: ''; position: absolute; inset: 20px; border-radius: 50%;
+      border: 1px solid rgba(201,168,76,.08);
+    }
+
+    /* ─── SECTION HEADER ──────────────────── */
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-tag { font-size: .62rem; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 16px; }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: var(--gold-light);
+      margin-bottom: 20px; line-height: 1.2;
+    }
+    .section-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 0 auto;
+    }
+
+    /* ─── FEATURES ────────────────────────── */
+    .features {
+      padding: 100px 60px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+      background: rgba(201,168,76,.05);
+    }
+    .feature-item {
+      padding: 48px 40px; text-align: center;
+      border: 1px solid rgba(201,168,76,.1);
+      transition: background .3s;
+    }
+    .feature-item:hover { background: rgba(201,168,76,.05); }
+    .feature-icon { font-size: 2rem; margin-bottom: 20px; }
+    .feature-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--gold); margin-bottom: 12px; letter-spacing: .05em; }
+    .feature-text { font-size: .8rem; line-height: 1.8; color: var(--muted); }
+
+    /* ─── PRODUCTS ────────────────────────── */
+    .products { padding: 120px 60px; }
+    .products-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: rgba(201,168,76,.08);
+    }
+
+    .product-card {
+      background: var(--panel); padding: 0; overflow: hidden;
+      transition: transform .4s; position: relative;
+    }
+    .product-card:hover { transform: translateY(-4px); z-index: 1; }
+
+    .product-img {
+      width: 100%; height: 260px; overflow: hidden;
+      background: linear-gradient(135deg, #1f1810 0%, #2a1f10 50%, #1a1208 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .product-img-inner {
+      width: 140px; height: 140px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #4a3010 0%, #2a1a08 50%, #1a1005 100%);
+      box-shadow: 0 8px 32px rgba(0,0,0,.5), 0 0 40px rgba(201,168,76,.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+      position: relative;
+    }
+    .product-img-inner::before {
+      content: ''; position: absolute; inset: -12px; border-radius: 50%;
+      border: 1px solid rgba(201,168,76,.2);
+    }
+    .product-img-inner::after {
+      content: ''; position: absolute; inset: -24px; border-radius: 50%;
+      border: 1px solid rgba(201,168,76,.08);
+    }
+    .product-badge {
+      position: absolute; top: 20px; right: 20px;
+      background: var(--crimson); color: #fff;
+      font-size: .6rem; letter-spacing: .15em; padding: 4px 12px; text-transform: uppercase;
+    }
+    .product-body { padding: 32px; }
+    .product-series { font-size: .6rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .product-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold-light); margin-bottom: 12px; line-height: 1.3; }
+    .product-desc { font-size: .78rem; line-height: 1.8; color: var(--muted); margin-bottom: 24px; }
+    .product-details { display: flex; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+    .product-detail { font-size: .68rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .product-detail span:first-child { color: var(--gold); }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid rgba(201,168,76,.12); }
+    .product-price { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--gold); }
+    .product-price small { font-size: .65rem; font-family: 'Montserrat', sans-serif; color: var(--muted); display: block; }
+    .btn-order {
+      background: transparent; border: 1px solid var(--gold); color: var(--gold);
+      padding: 8px 18px; font-size: .65rem; letter-spacing: .15em; text-transform: uppercase;
+      cursor: pointer; transition: all .3s; font-family: 'Montserrat', sans-serif;
+    }
+    .btn-order:hover { background: var(--gold); color: var(--deep); }
+
+    /* ─── HIGHLIGHT BAND ──────────────────── */
+    .highlight {
+      padding: 100px 60px;
+      background: linear-gradient(135deg, rgba(139,26,26,.15) 0%, rgba(201,168,76,.06) 50%, rgba(139,26,26,.1) 100%);
+      border-top: 1px solid rgba(201,168,76,.12);
+      border-bottom: 1px solid rgba(201,168,76,.12);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .highlight-text .section-header { text-align: left; margin-bottom: 32px; }
+    .highlight-text .section-line { margin: 0; }
+    .highlight-para { font-size: .875rem; line-height: 2; color: var(--muted); margin-bottom: 20px; }
+    .highlight-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
+    .highlight-list li {
+      display: flex; align-items: center; gap: 14px;
+      font-size: .8rem; color: var(--text); letter-spacing: .05em;
+    }
+    .highlight-list li::before {
+      content: '◆'; color: var(--gold); font-size: .5rem; flex-shrink: 0;
+    }
+    .highlight-visual {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    }
+    .highlight-stat {
+      background: var(--panel); padding: 40px 32px; text-align: center;
+      border: 1px solid rgba(201,168,76,.1);
+    }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--gold); display: block; line-height: 1; }
+    .stat-label { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-top: 8px; display: block; }
+
+    /* ─── GIFT SETS ───────────────────────── */
+    .gift-section { padding: 120px 60px; }
+    .gift-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(201,168,76,.06); }
+    .gift-card {
+      background: var(--panel); padding: 56px 48px;
+      border: 1px solid rgba(201,168,76,.08);
+      display: flex; flex-direction: column; gap: 24px;
+      transition: border-color .3s;
+    }
+    .gift-card:hover { border-color: rgba(201,168,76,.3); }
+    .gift-icon { font-size: 2.4rem; }
+    .gift-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--gold-light); line-height: 1.2; }
+    .gift-price { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--gold); }
+    .gift-desc { font-size: .82rem; line-height: 1.9; color: var(--muted); }
+    .gift-includes { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .gift-includes li { font-size: .75rem; color: var(--text); display: flex; gap: 10px; }
+    .gift-includes li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+
+    /* ─── CONTACT ─────────────────────────── */
+    .contact { padding: 120px 60px; background: var(--dark); }
+    .contact-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 64px; }
+    .contact-item { padding: 40px 24px; border: 1px solid rgba(201,168,76,.15); }
+    .contact-item-icon { font-size: 1.8rem; margin-bottom: 16px; }
+    .contact-item-label { font-size: .6rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .contact-item-value { font-size: .85rem; color: var(--text); line-height: 1.7; }
+    .contact-item-value a { color: var(--text); text-decoration: none; }
+    .contact-item-value a:hover { color: var(--gold); }
+
+    .order-band {
+      margin-top: 80px; padding: 60px;
+      background: linear-gradient(135deg, rgba(201,168,76,.1) 0%, rgba(139,26,26,.12) 100%);
+      border: 1px solid rgba(201,168,76,.2);
+    }
+    .order-band h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--gold-light); margin-bottom: 16px; }
+    .order-band p { font-size: .85rem; color: var(--muted); margin-bottom: 32px; line-height: 1.8; }
+    .order-form { display: flex; gap: 0; max-width: 480px; margin: 0 auto; }
+    .order-input {
+      flex: 1; background: rgba(255,255,255,.05); border: 1px solid rgba(201,168,76,.3);
+      border-right: none; padding: 14px 20px; color: var(--text); font-family: 'Montserrat', sans-serif;
+      font-size: .8rem; outline: none;
+    }
+    .order-input::placeholder { color: var(--muted); }
+    .order-input:focus { border-color: var(--gold); }
+    .order-submit {
+      background: var(--gold); border: none; color: var(--deep);
+      padding: 14px 28px; font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+      cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600;
+      transition: background .3s;
+    }
+    .order-submit:hover { background: var(--gold-light); }
+
+    /* ─── FOOTER ──────────────────────────── */
+    footer {
+      padding: 40px 60px;
+      border-top: 1px solid rgba(201,168,76,.1);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; letter-spacing: .2em; color: var(--gold); }
+    .footer-copy { font-size: .7rem; color: var(--muted); letter-spacing: .1em; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: .7rem; color: var(--muted); text-decoration: none; letter-spacing: .1em; }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ─── SCROLL REVEAL ───────────────────── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── RESPONSIVE ──────────────────────── */
+    @media (max-width: 1024px) {
+      nav { padding: 16px 32px; }
+      .nav-links { display: none; }
+      .features { grid-template-columns: 1fr; padding: 60px 32px; }
+      .products { padding: 80px 32px; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .highlight { grid-template-columns: 1fr; padding: 80px 32px; }
+      .gift-section { padding: 80px 32px; }
+      .gift-grid { grid-template-columns: 1fr; }
+      .contact { padding: 80px 32px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      footer { padding: 32px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+    @media (max-width: 640px) {
+      .hero { padding: 100px 24px 60px; }
+      .moon { display: none; }
+      .products-grid { grid-template-columns: 1fr; }
+      .products { padding: 60px 24px; }
+      .highlight-visual { grid-template-columns: 1fr 1fr; }
+      .order-band { padding: 40px 24px; }
+      .order-form { flex-direction: column; }
+      .order-input { border-right: 1px solid rgba(201,168,76,.3); border-bottom: none; }
+      .order-submit { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────── -->
+<nav>
+  <div class="nav-logo">Sheraton · Bánh Trung Thu</div>
+  <ul class="nav-links">
+    <li><a href="#products">Bộ Sưu Tập</a></li>
+    <li><a href="#gift">Quà Tặng</a></li>
+    <li><a href="#contact">Đặt Hàng</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Đặt Ngay</button>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="moon"></div>
+
+  <div class="hero-tag">Bộ Sưu Tập Cao Cấp · 2024</div>
+  <h1>Bánh Trung Thu<br /><span>Khách Sạn Sheraton</span></h1>
+  <p class="hero-sub">Tinh hoa ẩm thực · Nghệ thuật thiết kế · Tặng phẩm đẳng cấp</p>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">
+    Bộ sưu tập bánh trung thu đặc biệt từ Sheraton – nơi hương vị truyền thống
+    gặp gỡ vẻ đẹp hiện đại, được đóng gói trong những hộp quà tinh tế
+    xứng tầm biếu tặng cao cấp.
+  </p>
+  <div>
+    <a href="#products" class="btn-primary">Khám Phá Bộ Sưu Tập</a>
+    <a href="#contact" class="btn-outline">Đặt Hàng</a>
+  </div>
+</section>
+
+<!-- ── FEATURES ─────────────────────────────── -->
+<section class="features reveal">
+  <div class="feature-item">
+    <div class="feature-icon">🏨</div>
+    <div class="feature-title">Đẳng Cấp 5 Sao</div>
+    <p class="feature-text">Được chế tác bởi đội ngũ bếp trưởng hàng đầu của Sheraton, đảm bảo chất lượng chuẩn khách sạn 5 sao quốc tế.</p>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">🎁</div>
+    <div class="feature-title">Bao Bì Sang Trọng</div>
+    <p class="feature-text">Hộp đựng thiết kế độc quyền với giấy ép nổi, họa tiết hoa lam vẽ tay – nghệ thuật và tinh tế trong từng chi tiết.</p>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">🌙</div>
+    <div class="feature-title">Hương Vị Truyền Thống</div>
+    <p class="feature-text">Công thức bánh kết hợp hài hòa giữa nguyên liệu thượng hạng và bí quyết làm bánh lâu đời của người Việt.</p>
+  </div>
+</section>
+
+<!-- ── PRODUCTS ──────────────────────────────── -->
+<section id="products" class="products reveal">
+  <div class="section-header">
+    <span class="section-tag">Bộ Sưu Tập</span>
+    <h2 class="section-title">Hộp Bánh Trung Thu<br />Sheraton 2024</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="products-grid">
+
+    <!-- Product 1 -->
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-img-inner">🥮</div>
+      </div>
+      <div class="product-body">
+        <div class="product-series">Dòng Lam Thu</div>
+        <h3 class="product-name">Hộp 4 Bánh 100g<br />Lam Thu</h3>
+        <p class="product-desc">Hộp thiết kế giấy ép nổi màu lam, họa tiết hoa lam vẽ tay thanh nhã. Gồm 4 chiếc bánh 100g với nhân đa dạng.</p>
+        <div class="product-details">
+          <div class="product-detail"><span>◆</span> 4 bánh / hộp</div>
+          <div class="product-detail"><span>◆</span> 100g / bánh</div>
+          <div class="product-detail"><span>◆</span> Họa tiết Lam</div>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">
+            <small>Giá bán lẻ</small>
+            890.000 ₫
+          </div>
+          <button class="btn-order" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Đặt Mua</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-img-inner">🥮</div>
+        <div class="product-badge">Phổ Biến</div>
+      </div>
+      <div class="product-body">
+        <div class="product-series">Dòng Lam Kinh</div>
+        <h3 class="product-name">Hộp 4 Bánh 150g<br />Lam Kinh</h3>
+        <p class="product-desc">Phiên bản bánh cỡ lớn 150g trong hộp dòng Lam Kinh cao cấp, thích hợp làm quà biếu sang trọng.</p>
+        <div class="product-details">
+          <div class="product-detail"><span>◆</span> 4 bánh / hộp</div>
+          <div class="product-detail"><span>◆</span> 150g / bánh</div>
+          <div class="product-detail"><span>◆</span> Cỡ Đặc Biệt</div>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">
+            <small>Giá bán lẻ</small>
+            990.000 ₫
+          </div>
+          <button class="btn-order" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Đặt Mua</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-img-inner">🥮</div>
+        <div class="product-badge">Bán Chạy</div>
+      </div>
+      <div class="product-body">
+        <div class="product-series">Dòng Phụng Thành</div>
+        <h3 class="product-name">Hộp 6 Bánh 100g<br />Phụng Thành</h3>
+        <p class="product-desc">Bộ 6 bánh trong hộp dòng Phụng Thành đặc sắc, đủ để chia sẻ cùng gia đình và đối tác trong dịp Tết Trung Thu.</p>
+        <div class="product-details">
+          <div class="product-detail"><span>◆</span> 6 bánh / hộp</div>
+          <div class="product-detail"><span>◆</span> 100g / bánh</div>
+          <div class="product-detail"><span>◆</span> Dòng Phụng Thành</div>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">
+            <small>Giá bán lẻ</small>
+            1.350.000 ₫
+          </div>
+          <button class="btn-order" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Đặt Mua</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── HIGHLIGHT ─────────────────────────────── -->
+<section class="highlight reveal">
+  <div class="highlight-text">
+    <div class="section-header">
+      <span class="section-tag">Tại Sao Chọn Sheraton</span>
+      <h2 class="section-title">Quà Tặng Xứng Tầm<br />Đẳng Cấp</h2>
+      <div class="section-line"></div>
+    </div>
+    <p class="highlight-para">
+      Bánh trung thu Sheraton không đơn thuần là món ăn – đó là biểu tượng của
+      sự trân trọng và tình cảm sâu sắc, được gửi gắm qua từng hộp quà
+      được thiết kế tỉ mỉ và tinh tế.
+    </p>
+    <p class="highlight-para">
+      Mỗi chiếc bánh là sự kết hợp hoàn hảo giữa công thức truyền thống
+      và kỹ thuật hiện đại, tạo nên hương vị không thể nhầm lẫn.
+    </p>
+    <ul class="highlight-list">
+      <li>Nguyên liệu nhập khẩu cao cấp, chọn lọc kỹ càng</li>
+      <li>Bao bì thiết kế độc quyền, ép nổi thủ công</li>
+      <li>Giao hàng toàn quốc, đảm bảo nguyên vẹn</li>
+      <li>Hỗ trợ in logo, cá nhân hóa quà tặng doanh nghiệp</li>
+    </ul>
+  </div>
+  <div class="highlight-visual">
+    <div class="highlight-stat">
+      <span class="stat-num">20+</span>
+      <span class="stat-label">Năm Kinh Nghiệm</span>
+    </div>
+    <div class="highlight-stat">
+      <span class="stat-num">5★</span>
+      <span class="stat-label">Chất Lượng Quốc Tế</span>
+    </div>
+    <div class="highlight-stat">
+      <span class="stat-num">6</span>
+      <span class="stat-label">Bộ Sưu Tập</span>
+    </div>
+    <div class="highlight-stat">
+      <span class="stat-num">100%</span>
+      <span class="stat-label">Nguyên Liệu Tự Nhiên</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── GIFT SETS ──────────────────────────────── -->
+<section id="gift" class="gift-section reveal">
+  <div class="section-header">
+    <span class="section-tag">Bộ Quà Cao Cấp</span>
+    <h2 class="section-title">Combo Bánh &amp; Đồ Uống<br />Đặc Biệt</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="gift-grid">
+
+    <div class="gift-card">
+      <div class="gift-icon">🍵</div>
+      <h3 class="gift-title">Bánh Trung Thu Sheraton<br />Kèm Trà Tràng An</h3>
+      <div class="gift-price">1.550.000 ₫</div>
+      <p class="gift-desc">Sự kết hợp tinh tế giữa bánh trung thu Sheraton cùng trà Tràng An danh tiếng – bộ quà hoàn hảo để thể hiện sự trân trọng.</p>
+      <ul class="gift-includes">
+        <li>Hộp bánh trung thu Sheraton cao cấp</li>
+        <li>Trà Tràng An thượng hạng</li>
+        <li>Bao bì quà tặng sang trọng</li>
+        <li>Thiệp chúc mừng tùy chỉnh</li>
+      </ul>
+      <button class="btn-order" style="margin-top:8px; padding:12px 24px;" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Đặt Bộ Quà Này</button>
+    </div>
+
+    <div class="gift-card">
+      <div class="gift-icon">🍷</div>
+      <h3 class="gift-title">Bánh Trung Thu Sheraton<br />Kèm Rượu Nguyệt Quý I</h3>
+      <div class="gift-price">1.999.000 ₫</div>
+      <p class="gift-desc">Bộ quà đẳng cấp dành cho đối tác, lãnh đạo và những người bạn quý giá – bánh trung thu kết hợp rượu Nguyệt Quý thượng hạng.</p>
+      <ul class="gift-includes">
+        <li>Hộp bánh trung thu Sheraton</li>
+        <li>Rượu Nguyệt Quý I cao cấp</li>
+        <li>Hộp quà thiết kế đặc biệt</li>
+        <li>Dịch vụ giao hàng tận nơi</li>
+      </ul>
+      <button class="btn-order" style="margin-top:8px; padding:12px 24px;" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Đặt Bộ Quà Này</button>
+    </div>
+
+    <div class="gift-card" style="grid-column: 1 / -1;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+        <div>
+          <div class="gift-icon">🥂</div>
+          <h3 class="gift-title" style="margin-top:12px;">Bánh Trung Thu Sheraton<br />Kèm Rượu Nguyệt Quý II</h3>
+          <div class="gift-price">2.299.000 ₫</div>
+          <p class="gift-desc" style="margin-top:12px;">Bộ quà cao cấp nhất trong bộ sưu tập – dành cho những dịp quan trọng và đối tác đặc biệt. Sự lựa chọn hoàn hảo của giới thượng lưu.</p>
+        </div>
+        <div>
+          <ul class="gift-includes">
+            <li>Hộp bánh trung thu Sheraton phiên bản giới hạn</li>
+            <li>Rượu Nguyệt Quý II – dòng cao cấp đặc biệt</li>
+            <li>Hộp quà thiết kế độc quyền cao cấp nhất</li>
+            <li>Thẻ quà tặng cá nhân hóa theo yêu cầu</li>
+            <li>Giao hàng ưu tiên, đóng gói cẩn thận</li>
+          </ul>
+          <button class="btn-order" style="margin-top:24px; padding:12px 28px;" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Đặt Bộ Quà Này</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────────── -->
+<section id="contact" class="contact reveal">
+  <div class="contact-inner">
+    <div class="section-header">
+      <span class="section-tag">Liên Hệ &amp; Đặt Hàng</span>
+      <h2 class="section-title">Đặt Hàng Ngay<br />Hôm Nay</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <div class="contact-item-label">Hotline</div>
+        <div class="contact-item-value">
+          <a href="tel:0915200384">0915 200 384</a><br />
+          <a href="tel:0865783363">0865 783 363</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">✉️</div>
+        <div class="contact-item-label">Email</div>
+        <div class="contact-item-value">
+          <a href="mailto:banhtrungthukhachsan5sao@gmail.com">banhtrungthukhachsan5sao<br />@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🕐</div>
+        <div class="contact-item-label">Giờ Làm Việc</div>
+        <div class="contact-item-value">
+          Thứ 2 – Thứ 7<br />8:00 – 21:00
+        </div>
+      </div>
+    </div>
+
+    <div class="order-band">
+      <h3>Nhận Báo Giá &amp; Tư Vấn Miễn Phí</h3>
+      <p>Để lại số điện thoại, chúng tôi sẽ liên hệ tư vấn và gửi báo giá chi tiết trong vòng 30 phút.</p>
+      <div class="order-form">
+        <input type="tel" class="order-input" placeholder="Nhập số điện thoại của bạn..." />
+        <button class="order-submit">Gửi Ngay</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────── -->
+<footer>
+  <div class="footer-logo">Sheraton · Bánh Trung Thu 2024</div>
+  <div class="footer-copy">© 2024 Sheraton Mooncake Collection. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#products">Sản Phẩm</a>
+    <a href="#gift">Bộ Quà</a>
+    <a href="#contact">Liên Hệ</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Order form
+  document.querySelector('.order-submit').addEventListener('click', function() {
+    const input = document.querySelector('.order-input');
+    if (input.value.trim()) {
+      this.textContent = '✓ Đã Nhận';
+      this.style.background = '#2d5a27';
+      this.style.color = '#fff';
+      input.value = '';
+      setTimeout(() => {
+        this.textContent = 'Gửi Ngay';
+        this.style.background = '';
+        this.style.color = '';
+      }, 3000);
+    } else {
+      input.style.borderColor = '#8b1a1a';
+      setTimeout(() => input.style.borderColor = '', 2000);
+    }
+  });
+</script>
+</body>
+</html>
